@@ -36,19 +36,19 @@ print(hamming_distance(s,t))
 
 n = 85                                                                     
 m = 17                                                                       
-bunnies = [1, 1]                                                               
+bun = [1, 1]                                                               
 months = 2  
 count = 0                                                                   
 while months < n:                                                              
     if months < m:                                                             
-        bunnies.append(bunnies[-2] + bunnies[-1])                              
+        bun.append(bunnies[-2] + bun[-1])                              
     elif months == m or count == m + 1:                                        
-        bunnies.append(bunnies[-2] + bunnies[-1] - 1)                          
+        bun.append(bun[-2] + bun[-1] - 1)                          
     else:                                                                      
-        bunnies.append(bunnies[-2] + bunnies[-1] - bunnies[-(                  
+        bun.append(bun[-2] + bun[-1] - bun[-(                  
             m + 1)])                                                           
     months += 1                                                                
-print(bunnies[-1])   
+print(bun[-1])   
 
 
 
@@ -73,16 +73,16 @@ codon_map = {
     'UGG': 'W',     'CGG': 'R',     'AGG': 'R',     'GGG': 'G'
 }
  
-def codon_frequency():
-    frequency = {}
+def codon_freq():
+    freq = {}
     for k, v in codon_map.items():
-        if v not in frequency:
-            frequency[v] = 0
-        frequency[v] += 1
-    return (frequency)
+        if v not in freq:
+            freq[v] = 0
+        freq[v] += 1
+    return (freq)
  
 def possible_sequences(sequence):
-    f = codon_frequency()
+    f = codon_freq()
     n = f['Stop']
     for seq in sequence:
         n *= f[seq]
@@ -165,20 +165,20 @@ n = 6
 print(math.factorial(n))                            
 perm = itertools.permutations(list(range(1, n + 1)))
 for i, j in enumerate(list(perm)):                  
-    permutation = ''                                
+    permut = ''                                
     for item in j:                                  
-        permutation += str(item) + ' '              
-    print(permutation) 
+        permut += str(item) + ' '              
+    print(permut) 
 
 
 #exercise8revp
 
 def palindrome(s, k):
 	
-	palindrome_pairs = [('A','T'),('T','A'),('G','C'),('C','G')]
+	pali_pairs = [('A','T'),('T','A'),('G','C'),('C','G')]
 	for i in range(len(s)-k+1):
 		test = s[i:i+k]
-		if all((test[j],test[k-j-1]) in palindrome_pairs for j in range(k)):
+		if all((test[j],test[k-j-1]) in pali_pairs for j in range(k)):
 			
 			print(i+1, k)
 
@@ -194,17 +194,17 @@ import itertools
  
 with open("rosalind_lexf.txt") as f:
     data = f.read().split()
-    letters = data[:-1]
+    let = data[:-1]
     n = int(data[-1])
-perm = itertools.product(letters, repeat = n)
-output = []
+perm = itertools.product(let, repeat = n)
+out = []
 for i, j in enumerate(list(perm)):
     permutation = ''
     for item in j:
         permutation += str(item)
-    output.append(permutation)
-output.sort()
-for item in output:
+    out.append(permutation)
+out.sort()
+for item in out:
     print(item, end="\n")
 
 
